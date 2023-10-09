@@ -17,7 +17,7 @@ jobs:
           node-version: 18
 
       - name: Navigate to the project directory
-        run: cd webapp
+        run: cd ${{ github.workspace }}
         working-directory: ${{ github.workspace }}
 
       - name: Install project dependencies
