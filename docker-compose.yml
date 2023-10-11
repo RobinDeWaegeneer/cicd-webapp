@@ -21,7 +21,11 @@ services:
     image: robinirinformatica/webapp:latest
     depends_on:
       - webapp
-    command: ["yarn", "test", "test.spec.js"]
+    build:
+      context: .
+    volumes:
+      - .:/app
+    command: ["yarn", "test-api"]
     environment:
       - API_URL=http://webapp:3000
 
