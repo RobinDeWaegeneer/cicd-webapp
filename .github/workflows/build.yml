@@ -16,9 +16,9 @@ jobs:
         with:
           node-version: 18
 
-      - name: Navigate to the project directory
-        run: cd ${{ github.workspace }}
-        working-directory: ${{ github.workspace }}
+      # - name: Navigate to the project directory
+      #   run: cd ${{ github.workspace }}
+      #   working-directory: ${{ github.workspace }}
 
       - name: Install project dependencies
         run: yarn install
@@ -26,8 +26,21 @@ jobs:
       - name: Lint the project
         run: yarn lint
 
-      - name: Run tests
-        run: yarn test
+        ## - name: Run unit tests
+
+      - name: Start services using Docker Compose
+        run: docker-compose up -d
+        working-directory: ${{ github.workspace }}
+
+      - name: Run API tests with Docker Compose
+        run: docker-compose run tests
+        working-directory: ${{ github.workspace }}
+
+      - name: Stop services started by Docker Compose
+        run: docker-compose down
+        working-directory: ${{ github.workspace }}
+
+      ## ----------------------------------
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
