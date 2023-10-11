@@ -9,9 +9,8 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha test.js --timeout 10000",
-    "lint": "eslint . --ext .js",
-    "test-api": "mocha test.spec.js"
+    "test": "mocha test.spec.js --timeout 10000",
+    "lint": "eslint . --ext .js"
   },
   "dependencies": {
     "@fakerjs/animal": "^2.2.0",

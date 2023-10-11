@@ -17,17 +17,16 @@ services:
     volumes:
       - mongodb_data:/data/db
 
-  tests:
-    image: robinirinformatica/webapp:latest
-    depends_on:
-      - webapp
-    build:
-      context: .
-    volumes:
-      - .:/app
-    command: ["yarn", "test-api"]
-    environment:
-      - API_URL=http://webapp:3000
+tests:
+  build:
+    context: .
+  depends_on:
+    - webapp
+  volumes:
+    - .:/app
+  command: ["yarn", "test-api"]
+  environment:
+    - API_URL=http://webapp:3000
 
 volumes:
   mongodb_data:
