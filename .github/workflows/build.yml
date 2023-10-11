@@ -26,7 +26,7 @@ jobs:
       - name: Lint the project
         run: yarn lint
 
-      ## tests
+      ## tests docker compose
       - name: Docker Compose up
         run: docker-compose up -d
 
