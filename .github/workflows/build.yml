@@ -33,7 +33,7 @@ jobs:
         working-directory: ${{ github.workspace }}
 
       - name: Run API tests with Docker Compose
-        run: docker-compose run tests
+        run: docker-compose exec tests yarn test-api
         working-directory: ${{ github.workspace }}
 
       - name: Stop services started by Docker Compose
