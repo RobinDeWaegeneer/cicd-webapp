@@ -26,21 +26,16 @@ jobs:
       - name: Lint the project
         run: yarn lint
 
-        ## - name: Run unit tests
-
-      - name: Start services using Docker Compose
+      ## tests
+      - name: Docker Compose up
         run: docker-compose up -d
-        working-directory: ${{ github.workspace }}
 
-      - name: Run API tests with Docker Compose
-        run: docker-compose exec -T tests yarn test-api
-        working-directory: ${{ github.workspace }}
+      - name: Run unit tests
+        run: docker compose run tests
 
-      - name: Stop services started by Docker Compose
+      - name: Docker Compose down
         run: docker-compose down
-        working-directory: ${{ github.workspace }}
-
-      ## ----------------------------------
+      ## -------------------
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
