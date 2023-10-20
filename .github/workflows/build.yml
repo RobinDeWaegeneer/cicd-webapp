@@ -26,16 +26,16 @@ jobs:
       - name: Lint the project
         run: yarn lint
 
-      ## tests docker compose
-      # - name: Docker Compose up
-      #   run: docker-compose up -d
+      # tests docker compose
+      - name: Docker Compose up
+        run: docker-compose up -d
 
-      # - name: Run unit tests
-      #   run: docker compose run tests
+      - name: Run unit tests
+        run: docker compose run tests
 
-      # - name: Docker Compose down
-      #   run: docker-compose down
-      ## -------------------
+      - name: Docker Compose down
+        run: docker-compose down
+      # -------------------
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v1
